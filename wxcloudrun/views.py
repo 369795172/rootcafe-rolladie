@@ -34,7 +34,7 @@ def counter(request, _):
         rsp = update_count(request)
     else:
         rsp = JsonResponse({'code': -1, 'errorMsg': '请求方式错误'},
-                            json_dumps_params={'ensure_ascii': False})
+                           json_dumps_params={'ensure_ascii': False})
     logger.info('response result: {}'.format(rsp.content.decode('utf-8')))
     return rsp
 
@@ -48,7 +48,7 @@ def get_count():
         data = Counters.objects.get(id=1)
     except Counters.DoesNotExist:
         return JsonResponse({'code': 0, 'data': 0},
-                    json_dumps_params={'ensure_ascii': False})
+                            json_dumps_params={'ensure_ascii': False})
     return JsonResponse({'code': 0, 'data': data.count},
                         json_dumps_params={'ensure_ascii': False})
 
@@ -78,7 +78,7 @@ def update_count(request):
         data.count += 1
         data.save()
         return JsonResponse({'code': 0, "data": data.count},
-                    json_dumps_params={'ensure_ascii': False})
+                            json_dumps_params={'ensure_ascii': False})
     elif body['action'] == 'clear':
         try:
             data = Counters.objects.get(id=1)
@@ -86,10 +86,10 @@ def update_count(request):
         except Counters.DoesNotExist:
             logger.info('record not exist')
         return JsonResponse({'code': 0, 'data': 0},
-                    json_dumps_params={'ensure_ascii': False})
+                            json_dumps_params={'ensure_ascii': False})
     else:
         return JsonResponse({'code': -1, 'errorMsg': 'action参数错误'},
-                    json_dumps_params={'ensure_ascii': False})
+                            json_dumps_params={'ensure_ascii': False})
 
 
 def roll(request, _):
@@ -104,9 +104,10 @@ def roll(request, _):
         rsp = get_roll()
     else:
         rsp = JsonResponse({'code': -1, 'errorMsg': '请求方式错误'},
-                            json_dumps_params={'ensure_ascii': False})
+                           json_dumps_params={'ensure_ascii': False})
     logger.info('response result: {}'.format(rsp.content.decode('utf-8')))
     return rsp
+
 
 def get_roll():
     """
