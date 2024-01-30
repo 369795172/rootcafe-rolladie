@@ -235,6 +235,9 @@
 <script>
   init();
   function init() {
+      // Set a default discount value
+    $(".count-number").html("Go ahead, toss the dice");
+
     $.ajax("/api/roll", {
       method: "get",
     }).done(function (res) {
