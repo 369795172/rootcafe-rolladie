@@ -115,7 +115,7 @@ def get_roll():
     """
 
     # Generate a random discount between 0 and 10
-    random_discount = random.randint(0, 10)
+    random_discount = random.randint(6, 10)
 
     # Create a new Rolls record with the random discount
     roll = Rolls(discount=random_discount)
